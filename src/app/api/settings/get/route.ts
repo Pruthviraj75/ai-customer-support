@@ -10,14 +10,16 @@ export async function POST(req:NextRequest){
         return NextResponse.json(
             {message:"owner id is found"},
             {status: 400}
-        )
-        await connectDb()
+        );
     }
+    await connectDb()
     const setting = await Settings.findOne(
         {ownerId}
     )
     return NextResponse.json(setting)
     } catch (error) {
+        console.error("GET SETTINGS ERROR:", error);
+
         return NextResponse.json(
             {message:`get settings error ${error}`},
             {status:500}
