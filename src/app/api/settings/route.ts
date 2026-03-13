@@ -17,16 +17,18 @@ export async function POST(req:NextRequest) {
             {ownerId},
             {ownerId, businessName, supportEmail, knowledge},
             {
-            // new:true,
-            returnDocument: 'after',
+            new:true,
+            // returnDocument: 'after',
             upsert:true}
         )
         return NextResponse.json(settings)
     } catch (error) {
-        return NextResponse.json(
-            {message:`settings error ${error}`},
-            {status:500}
-        )
-    }
+    console.error("SETTINGS API ERROR:", error);
+
+    return NextResponse.json(
+        { message: "Internal Server Error" },
+        { status: 500 }
+    );
+}
 }
 
