@@ -11,7 +11,6 @@
     }
 
     const button = document.createElement("div")
-    // button.innerHTML="🗨️"
     button.innerHTML="💬"
 
     Object.assign(button.style,{
@@ -155,8 +154,6 @@
         messageArea.scrollTop = messageArea.scrollHeight
 
         try {
-            console.log("OWNER ID:", ownerId)
-console.log("MESSAGE:", text)
             const response = await fetch(api_url,{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
